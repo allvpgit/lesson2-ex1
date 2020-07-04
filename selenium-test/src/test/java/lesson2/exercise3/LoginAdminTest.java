@@ -49,7 +49,9 @@ public class LoginAdminTest {
     private static Stream<Arguments> login_admin() {
 
         return Stream.of(
-                Arguments.of((Supplier<WebDriver>) ChromeDriver::new, "admin", "admin")
+                Arguments.of((Supplier<WebDriver>) ChromeDriver::new, "admin", "admin"),
+                Arguments.of((Supplier<WebDriver>)FirefoxDriver::new, "admin", "admin"),
+                Arguments.of((Supplier<WebDriver>)OperaDriver::new, "admin", "admin")
         );
     }
 
