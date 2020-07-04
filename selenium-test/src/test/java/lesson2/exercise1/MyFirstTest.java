@@ -39,7 +39,7 @@ public class MyFirstTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driverToQuite = driver;
 
-        driver.get("https://www.google.com");
+        driver.navigate().to("https://www.google.com");
         driver.findElement(By.name("q")).sendKeys("webdriver");
 
         try {
