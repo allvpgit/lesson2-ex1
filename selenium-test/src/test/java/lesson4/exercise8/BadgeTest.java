@@ -1,4 +1,4 @@
-package lesson4.exercise7;
+package lesson4.exercise8;
 
 import lesson2.TestBase;
 import org.junit.jupiter.api.AfterAll;
