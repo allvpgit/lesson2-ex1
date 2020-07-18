@@ -6,8 +6,11 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -49,10 +52,17 @@ public class LoginAdminTest {
     private static Stream<Arguments> login_admin() {
 
         return Stream.of(
-                Arguments.of((Supplier<WebDriver>) ChromeDriver::new, "admin", "admin"),
+                Arguments.of((Supplier<WebDriver>) LoginAdminTest::getChromeDriver, "admin", "admin"),
                 Arguments.of((Supplier<WebDriver>)FirefoxDriver::new, "admin", "admin"),
-                Arguments.of((Supplier<WebDriver>)OperaDriver::new, "admin", "admin")
+                Arguments.of((Supplier<WebDriver>)OperaDriver::new, "admin", "admin"),
+                Arguments.of((Supplier<WebDriver>) InternetExplorerDriver::new, "admin", "admin")
         );
+    }
+
+    private static WebDriver getChromeDriver(){
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("start-maximized");
+        return new ChromeDriver(options);
     }
 
 }
