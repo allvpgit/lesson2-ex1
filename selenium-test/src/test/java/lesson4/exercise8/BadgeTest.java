@@ -38,11 +38,11 @@ public class BadgeTest extends TestBase {
         driver.navigate().to("http://localhost/litecart/en/");
 
         //count all items on main page
-        List<WebElement> allItems = driver.findElements(By.xpath("//div[@class='content']//a[@class='link']"));
+        List<WebElement> allItems = driver.findElements(By.xpath("//li[contains(@class, 'product')]"));
         System.out.printf("Nunber of items is %d\n", allItems.size());
 
         //count items with only one badge
-        List<WebElement> itemsWithBadge = driver.findElements(By.xpath("//div[@class='content']//a[count(.//div[contains(@class, 'sticker')])=1]"));
+        List<WebElement> itemsWithBadge = driver.findElements(By.xpath("//li[contains(@class, 'product') and count(.//div[contains(@class, 'sticker')])=1]"));
         System.out.printf("Nunber of items with only one badge is %d\n", itemsWithBadge.size());
 
         //all items are items with only one badge
