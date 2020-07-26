@@ -1,6 +1,7 @@
-package lesson5;
+package tests.lesson5;
 
-import lesson2.TestBase;
+import com.seleniumtest.constants.TestUtils;
+import tests.TestBase;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -17,8 +18,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.seleniumtest.constants.DriverFactory.clearDriver;
-import static com.seleniumtest.constants.DriverFactory.getChrome;
 import static com.seleniumtest.constants.constants.CredentialsData.CREDENTIALS_DATA;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
@@ -30,12 +29,12 @@ public class CountrySortingTest extends TestBase {
 
     @AfterAll
     static void afterAll() {
-        clearDriver(driver);
+        TestUtils.clearDriver(driver);
     }
 
     @BeforeAll
     static void beforeAll() {
-        driver = getChrome();
+        driver = CHROME.get();
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
         driver.navigate().to("http://localhost/litecart/admin/");

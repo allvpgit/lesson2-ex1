@@ -1,6 +1,7 @@
-package lesson4.exercise7;
+package tests.lesson4.exercise7;
 
-import lesson2.TestBase;
+import com.seleniumtest.constants.TestUtils;
+import tests.TestBase;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -13,7 +14,6 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static com.seleniumtest.constants.DriverFactory.*;
 import static com.seleniumtest.constants.constants.CredentialsData.CREDENTIALS_DATA;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
@@ -36,7 +36,7 @@ public class SidebarTest extends TestBase {
 
         for(By tab : tabsToClick){
             driver.findElement(tab).click();
-            testWait(500L);
+            TestUtils.testWait(500L);
         }
 
         By headerLocator = By.xpath(String.format("//h1[contains(text(),'%s')]", headerToAssert));
@@ -47,8 +47,8 @@ public class SidebarTest extends TestBase {
     }
 
     private static Stream<Arguments> open_sidebar_subtabs() {
-        clearDriver(driver);
-        driver = getChrome();
+        TestUtils.clearDriver(driver);
+        driver = CHROME.get();
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
         driver.navigate().to("http://localhost/litecart/admin/");

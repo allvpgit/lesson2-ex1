@@ -1,4 +1,4 @@
-package lesson2.exercise3;
+package tests.lesson2.exercise3;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.ParameterizedTest;
